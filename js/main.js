@@ -93,3 +93,23 @@
     });
 })(jQuery);
 
+// <!-- WhatsApp Redirect Script -->
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // قراءة البيانات من الفورم
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // رقم الواتساب اللي الرسالة هتوصله
+    const phone = "201157097124";
+
+    // تكوين نص الرسالة
+    const text = `👋 مرحباً أحمد عيد!\n\nالعميل أرسل رسالة جديدة:\n\n👤 الاسم: ${name}\n📧 الإيميل: ${email}\n📝 الموضوع: ${subject}\n💬 الرسالة:\n${message}`;
+
+    // فتح واتساب بالرابط المكوّن
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+});
